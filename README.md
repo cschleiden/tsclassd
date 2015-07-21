@@ -3,9 +3,11 @@ Generate DGML VS code maps from Typescript code. Doesn't work in all cases yet, 
 
 Usage:
 
-tsclassd <glob input files> <option: output file, otherwise stdout>
+`tsclassd <glob input files> <option: output file, otherwise stdout>`
 
 
-#Example
+##Example Output##
+
+Rendered using Microsoft Visual Studio:
 
 ![Example](https://cschleiden.github.io/tsclassd/pages/example.png)
