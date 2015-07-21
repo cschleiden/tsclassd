@@ -3,8 +3,13 @@ Generate DGML VS code maps from Typescript code. Doesn't work in all cases yet, 
 
 Usage:
 
+`npm install tsclassd` or `npm install -g tsclassd`
+
 `tsclassd <glob input files> <option: output file, otherwise stdout>`
 
+Example:
+
+`tsclass examples\**\*.ts output.dgml`
 
 ##Example Output##
 
