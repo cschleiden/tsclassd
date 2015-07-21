@@ -1,4 +1,4 @@
-# tsclassd
+# tsclassdhttps://github.com/cschleiden/tsclassd/edit/master/README.md#
 Generate DGML VS code maps from Typescript code. Doesn't work in all cases yet, and probably can be done in a more elegant way, but for a weekend hacking project it works just enough.
 
 Usage:
@@ -7,11 +7,9 @@ Usage:
 
 `tsclassd <glob input files> <option: output file, otherwise stdout>`
 
-Example:
+##Example##
 
-`tsclass examples\**\*.ts output.dgml`
-
-##Example Output##
+`tsclassd examples\**\*.ts output.dgml`
 
 Rendered using Microsoft Visual Studio:
 
