@@ -1,0 +1,21 @@
+{
+  "name": "tsclassd",
+  "version": "0.0.1",
+  "description": "Generate DGML VS diagrams from Typescript source.",
+  "main": "./lib/app.js",
+  "bin": "./bin/tsclassd",
+  "engines": {
+    "node": ">=0.8.0"
+  },
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "command-line-args": "^0.5.9",
+    "glob": "^5.0.14",
+    "typescript": "^1.5.3"
+  },
+  "devDependencies": {},  
+  "author": "Christopher Schleiden",
+  "license": "ISC"
+}

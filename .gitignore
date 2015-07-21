@@ -1,0 +1,11 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/tsclassd/v14
+*.dll
+/node_modules
+/obj/Debug
+*.dat
+*.dgml
+*.map

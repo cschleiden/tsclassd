@@ -1,0 +1,83 @@
+﻿<Categories>
+  <Category Id="CodeSchema_Class" Label="Class" BasedOn="CodeSchema_Type" Icon="CodeSchema_Class" />
+  <Category Id="CodeSchema_Field" Label="Field" BasedOn="CodeSchema_Member" Icon="CodeSchema_Field" />  
+  <Category Id="CodeSchema_Member" Label="Member" Icon="CodeSchema_Field" />
+  <Category Id="CodeSchema_Method" Label="Method" BasedOn="CodeSchema_Member" Icon="CodeSchema_Method" />
+  <Category Id="CodeSchema_Namespace" Label="Namespace" Icon="CodeSchema_Namespace" />
+  <Category Id="CodeSchema_Property" Label="Property" BasedOn="CodeSchema_Member" Icon="CodeSchema_Property" />
+  <Category Id="Contains" Label="Contains" IncomingActionLabel="Contained By" IsContainment="True" OutgoingActionLabel="Contains" />
+  <Category Id="Implements" Label="Implements" IncomingActionLabel="Implemented by" OutgoingActionLabel="Implements" />
+  <Category Id="Extends" Label="Extends" IncomingActionLabel="Extended By" OutgoingActionLabel="Extends" />
+  <Category Id="References" Label="References" IncomingActionLabel="Referenced By" OutgoingActionLabel="References" />
+  <Category Id="File" Label="File" Icon="File" />
+</Categories>
+<Styles>
+  <Style TargetType="Node" GroupLabel="Namespace" ValueLabel="Has category">
+    <Condition Expression="HasCategory('CodeSchema_Namespace')" />
+    <Setter Property="Background" Value="#FF0E619A" />
+    <Setter Property="Stroke" Value="#FF0E619A" />
+    <Setter Property="Icon" Value="CodeSchema_Namespace" />
+  </Style>
+  <Style TargetType="Node" GroupLabel="Interface" ValueLabel="Has category">
+    <Condition Expression="HasCategory('CodeSchema_Interface')" />
+    <Setter Property="Background" Value="#FF1382CE" />
+    <Setter Property="Stroke" Value="#FF1382CE" />
+    <Setter Property="Icon" Value="CodeSchema_Interface" />
+  </Style>
+  <Style TargetType="Node" GroupLabel="Enumeration" ValueLabel="Has category">
+    <Condition Expression="HasCategory('CodeSchema_Enum')" />
+    <Setter Property="Background" Value="#FF1382CE" />
+    <Setter Property="Stroke" Value="#FF1382CE" />
+    <Setter Property="Icon" Value="CodeSchema_Enum" />
+    <Setter Property="LayoutSettings" Value="List" />
+  </Style>
+  <Style TargetType="Node" GroupLabel="Class" ValueLabel="Has category">
+    <Condition Expression="HasCategory('CodeSchema_Type')" />
+    <Setter Property="Background" Value="#FF1382CE" />
+    <Setter Property="Stroke" Value="#FF1382CE" />
+    <Setter Property="Icon" Value="CodeSchema_Class" />
+  </Style>
+  <Style TargetType="Node" GroupLabel="Property" ValueLabel="Has category">
+    <Condition Expression="HasCategory('CodeSchema_Property')" />
+    <Setter Property="Background" Value="#FFE0E0E0" />
+    <Setter Property="Stroke" Value="#FFE0E0E0" />
+    <Setter Property="Icon" Value="CodeSchema_Property" />
+  </Style>
+  <Style TargetType="Node" GroupLabel="Method" ValueLabel="Has category">
+    <Condition Expression="HasCategory('CodeSchema_Method')" />
+    <Setter Property="Background" Value="#FFE0E0E0" />
+    <Setter Property="Stroke" Value="#FFE0E0E0" />
+    <Setter Property="Icon" Value="CodeSchema_Method" />
+    <Setter Property="LayoutSettings" Value="List" />
+  </Style>
+  <Style TargetType="Node" GroupLabel="Field" ValueLabel="Has category">
+    <Condition Expression="HasCategory('CodeSchema_Field')" />
+    <Setter Property="Background" Value="#FFE0E0E0" />
+    <Setter Property="Stroke" Value="#FFE0E0E0" />
+    <Setter Property="Icon" Value="CodeSchema_Field" />
+  </Style>
+  <Style TargetType="Link" GroupLabel="Extends" ValueLabel="True">
+    <Condition Expression="HasCategory('Extends')" />
+    <Setter Property="Stroke" Value="#FF00A600" />
+    <Setter Property="StrokeDashArray" Value="2 0" />
+    <Setter Property="DrawArrow" Value="true" />
+  </Style>
+  <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True">
+    <Condition Expression="HasCategory('Implements')" />
+    <Setter Property="Stroke" Value="#8000A600" />
+    <Setter Property="StrokeDashArray" Value="2 2" />
+    <Setter Property="DrawArrow" Value="true" />
+  </Style>
+  <Style TargetType="Link" GroupLabel="Extends" ValueLabel="True" Visibility="Hidden">
+    <Condition Expression="HasCategory('Extends') And Target.HasCategory('CodeSchema_Class')" />
+    <Setter Property="TargetDecorator" Value="OpenArrow" />
+  </Style>
+  <Style TargetType="Link" GroupLabel="Implements" ValueLabel="True" Visibility="Hidden">
+    <Condition Expression="HasCategory('Implements') And (Target.HasCategory('CodeSchema_Interface') Or Target.HasCategory('CodeSchema_Class'))" />
+    <Setter Property="TargetDecorator" Value="OpenArrow" />
+  </Style>
+  <Style TargetType="Link" GroupLabel="References" ValueLabel="True" Visibility="Hidden">
+    <Condition Expression="HasCategory('References')" />
+  </Style>
+</Styles>
+</DirectedGraph>

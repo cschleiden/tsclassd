@@ -1,0 +1,29 @@
+﻿#!/usr/bin/env node
+
+var glob = require("glob");
+var tsclassd = require("../lib/tsclassd");
+
+function main() {
+    if (process.argv.length < 3) {
+        console.log("Usage: tsclassd '<input files, glob pattern>' <optional>output");
+
+        return;
+    }
+
+    var sourcePattern = process.argv[2];
+    var outputName = process.argv[3] || null;
+
+    glob(sourcePattern, function (error, files) {
+        if (error) {
+            console.log("An error has occured " + error);
+            return;
+        }
+
+        console.log("Processing: " + files.join(", "));
+
+        var g = new tsclassd.Generator(files);
+        g.output(outputName);
+    });
+}
+
+main();
