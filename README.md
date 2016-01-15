@@ -5,11 +5,11 @@ Usage:
 
 `npm install tsclassd` or `npm install -g tsclassd`
 
-`tsclassd <glob input files> <optional: output file, otherwise stdout>`
+`tsclassd <glob input files> <optional: output file, otherwise stdout> <optional: moduleFormat=AMD/System/UMD, default: AMD>`
 
 ##Example##
 
-`tsclassd examples\**\*.ts output.dgml`
+`tsclassd examples\**\*.ts output.dgml` moduleFormat=AMD
 
 Rendered using Microsoft Visual Studio:
 
