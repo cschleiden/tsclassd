@@ -73,8 +73,14 @@ export class Generator {
 
         var t = this.tc.getTypeAtLocation(node);
 
+        if (!t) {
+            console.log("Undefined type");
+        }
+
         var fullyQualifiedName = this.tc.typeToString(
-            t, parentNode, ts.TypeFormatFlags.UseFullyQualifiedType | ts.TypeFormatFlags.InElementType | ts.TypeFormatFlags.NoTruncation | ts.TypeFormatFlags.WriteOwnNameForAnyLike);
+            t, parentNode,
+            ts.TypeFormatFlags.UseFullyQualifiedType | ts.TypeFormatFlags.InElementType
+                | ts.TypeFormatFlags.NoTruncation | ts.TypeFormatFlags.WriteOwnNameForAnyLike);
 
         if (t.symbol && t.symbol.name === "Array") {
             // For our purpose, we need the base type
