@@ -5,13 +5,14 @@ var tsclassd = require("../lib/tsclassd");
 
 function main() {
     if (process.argv.length < 3) {
-        console.log("Usage: tsclassd '<input files, glob pattern>' <optional>output");
+        console.log("Usage: tsclassd '<input files, glob pattern>' <optional>output <optional, default AMD>moduleFormat=AMD");
 
         return;
     }
 
     var sourcePattern = process.argv[2];
     var outputName = process.argv[3] || null;
+    var moduleFormat = (process.argv[4] || "moduleFormat=AMD").split("=")[1];
 
     glob(sourcePattern, function (error, files) {
         if (error) {
@@ -21,7 +22,7 @@ function main() {
 
         console.log("Processing: " + files.join(", "));
 
-        var g = new tsclassd.Generator(files);
+        var g = new tsclassd.Generator(files, moduleFormat);
         g.output(outputName);
     });
 }

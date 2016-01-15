@@ -1,6 +1,6 @@
 {
   "name": "tsclassd",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Generate DGML VS diagrams from Typescript source.",
   "main": "./lib/app.js",
   "bin": "./bin/tsclassd",

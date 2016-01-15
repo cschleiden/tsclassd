@@ -8,6 +8,22 @@ import templates = require("./templates");
 import path = require("path");
 import glob = require("glob");
 
+function stringToModuleKind(format: string): ts.ModuleKind {
+    switch (format) {
+        case "AMD":
+            return ts.ModuleKind.AMD;
+
+        case "CommonJS":
+            return ts.ModuleKind.CommonJS;
+
+        case "System":
+            return ts.ModuleKind.System;
+
+        case "UMD":
+            return ts.ModuleKind.UMD;
+    }
+}
+
 export class Generator {
     private static SEPARATOR = path.sep;
 
@@ -24,12 +40,12 @@ export class Generator {
 
     private file: number = null;
 
-    constructor(private files: string[]) {
+    constructor(private files: string[], moduleFormat: string) {
         var compilerOptions: ts.CompilerOptions = {
             noEmitOnError: true,
             noImplicitAny: true,
             target: ts.ScriptTarget.ES5,
-            module: ts.ModuleKind.CommonJS
+            module: stringToModuleKind(moduleFormat)
         };
 
         var host = ts.createCompilerHost(compilerOptions, true);
