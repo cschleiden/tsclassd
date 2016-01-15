@@ -1,20 +1,24 @@
 ﻿#!/usr/bin/env node
 
 var glob = require("glob");
+var cli = require('cli');
 var tsclassd = require("../lib/tsclassd");
 
-function main() {
-    if (process.argv.length < 3) {
-        console.log("Usage: tsclassd '<input files, glob pattern>' <optional>output <optional, default AMD>moduleFormat=AMD");
+cli.parse({
+    input: ['i', 'Input files, glob patterns are supported', 'string'],
+    output: ['o', 'Output file, default ', 'string'],
+    moduleFormat: ['m', 'Use specified TS module format, i.e., AMD/UMD/System/...', 'string', 'AMD'],
+    useAbsoluteImports: ['a', 'Use absolute paths for import statements', 'boolean', false],
+});
+
+cli.main(function(args, options) {
+    if (!options.input) {
+        this.error('Input files are required')
 
         return;
     }
 
-    var sourcePattern = process.argv[2];
-    var outputName = process.argv[3] || null;
-    var moduleFormat = (process.argv[4] || "moduleFormat=AMD").split("=")[1];
-
-    glob(sourcePattern, function (error, files) {
+    glob(options.input, function (error, files) {
         if (error) {
             console.log("An error has occured " + error);
             return;
@@ -22,9 +26,7 @@ function main() {
 
         console.log("Processing: " + files.join(", "));
 
-        var g = new tsclassd.Generator(files, moduleFormat);
-        g.output(outputName);
+        var g = new tsclassd.Generator(files, options.moduleFormat, options.useAbsoluteImports);
+        g.output(options.output);
     });
-}
-
-main();
+});

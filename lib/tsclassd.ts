@@ -40,7 +40,7 @@ export class Generator {
 
     private file: number = null;
 
-    constructor(private files: string[], moduleFormat: string) {
+    constructor(private files: string[], moduleFormat: string, private useAbsoluteImportPaths: boolean = false) {
         var compilerOptions: ts.CompilerOptions = {
             noEmitOnError: true,
             noImplicitAny: true,
@@ -194,7 +194,11 @@ export class Generator {
                     let importName = m.name.text;
                     let fileName = (<ts.LiteralExpression>(<ts.ExternalModuleReference>m.moduleReference).expression).text + ".ts";
 
-                    this.moduleImportNames[importName] = path.normalize(path.join(this.currentFilePath, fileName));
+                    if (this.useAbsoluteImportPaths) {
+                        this.moduleImportNames[importName] = path.normalize(fileName);
+                    } else {
+                        this.moduleImportNames[importName] = path.normalize(path.join(this.currentFilePath, fileName));
+                    }
                 }
 
                 break;
