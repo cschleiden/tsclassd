@@ -28,7 +28,9 @@ export class C extends D implements IB {
         this.pr = value;
     }
 
-    constructor(private XXXX: string, public YYY: boolean) { }
+    constructor(private XXXX: string, public YYY: boolean) {
+        super();
+    }
     
     public doSomethingClass(): string {
         return "";
@@ -41,6 +43,6 @@ export module SomeModule {
     export class F {}
     
     export function doSomething(): string {
-        
+        return "42";
     }
 }
